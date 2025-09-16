@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "553839290371",
+    "firebase_url": "https://btp-project-27-default-rtdb.firebaseio.com",
+    "project_id": "btp-project-27",
+    "storage_bucket": "btp-project-27.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:553839290371:android:579f8405b497f7c1b5c636",
+        "android_client_info": {
+          "package_name": "com.example.fleetmanagement"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkl8tGMNW_OrXHIBNzyMvwN66aHNhX_E4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
