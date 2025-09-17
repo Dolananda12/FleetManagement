@@ -132,16 +132,18 @@ class MainActivityViewModel(private val carRepository: Car_Repository) : ViewMod
             Log.e("FirebaseDB", "Username is null or empty!")
             return
         }
-        val fleetDataRef = database.getReference("fleet_data").child(userName)
+        val fleetDataRef = database.getReference("fleet_data_1").child(userName)
         val newCarData = mapOf(
-            "estimated_mileage" to "20 km/l",
-            "battery_level" to 100,
-            "engine_health" to "Good",
+            "pitch" to 0.0,  // No data for pitch in the current map
+            "datetime" to "2025-04-29 17:09:29",  // Mapping timestamp to datetime
+            "yaw" to 0.0,  // No data for yaw in the current map
+            "roll" to 0.0,  // No data for roll in the current map
             "latitude" to 0.0,
             "longitude" to 0.0,
-            "speed" to 0.0,
-            "warning" to "none",
-            "timestamp" to "2025-04-29 17:09:29"
+            "accel_x" to 0.0,  // No data for accel_x in the current map
+            "accel_y" to 0.0,  // No data for accel_y in the current map
+            "accel_z" to 0.0,  // No data for accel_z in the current map
+            "timestamp" to 12345.0 // Reusing timestamp here
         )
         fleetDataRef.setValue(newCarData)
             .addOnSuccessListener {
@@ -193,14 +195,16 @@ class MainActivityViewModel(private val carRepository: Car_Repository) : ViewMod
                 if (snapshot.exists()) {
                     val carEntity = CarEntity(
                         id = 0,
-                        est_milage = snapshot.child("estimated_mileage").getValue(String::class.java),
-                        batteryLevel = snapshot.child("battery_level").getValue(Double::class.java),
-                        engineHealth = snapshot.child("engine_health").getValue(String::class.java),
+                        accel_x = snapshot.child("accel_x").getValue(Double::class.java),
+                        accel_y = snapshot.child("accel_y").getValue(Double::class.java),
+                        accel_z = snapshot.child("accel_z").getValue(Double::class.java),
                         latitude = snapshot.child("latitude").getValue(Double::class.java),
                         longitude = snapshot.child("longitude").getValue(Double::class.java),
-                        speed = snapshot.child("speed").getValue(Double::class.java),
-                        warning = snapshot.child("warning").getValue(String::class.java),
-                        timestamp = snapshot.child("timestamp").getValue(String::class.java)
+                        datetime = snapshot.child("datetime").getValue(String::class.java),
+                        pitch = snapshot.child("pitch").getValue(Double::class.java),
+                        roll = snapshot.child("roll").getValue(Double::class.java),
+                        timestamp = snapshot.child("timestamp").getValue(Double::class.java),
+                        yaw = snapshot.child("yaw").getValue(Double::class.java)
                     )
                     trySend(carEntity)
                 } else {

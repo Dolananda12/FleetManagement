@@ -251,14 +251,16 @@ class MainActivity : ComponentActivity() {
                         if (snapshot.exists()) {
                             val car = CarEntity(
                                 id = 0,
-                                est_milage = snapshot.child("estimated_mileage").getValue(String::class.java),
-                                batteryLevel = snapshot.child("battery_level").getValue(Double::class.java),
-                                engineHealth = snapshot.child("engine_health").getValue(String::class.java),
+                                accel_x = snapshot.child("accel_x").getValue(Double::class.java),
+                                accel_y = snapshot.child("accel_y").getValue(Double::class.java),
+                                accel_z = snapshot.child("accel_z").getValue(Double::class.java),
                                 latitude = snapshot.child("latitude").getValue(Double::class.java),
                                 longitude = snapshot.child("longitude").getValue(Double::class.java),
-                                speed = snapshot.child("speed").getValue(Double::class.java),
-                                warning = snapshot.child("warning").getValue(String::class.java),
-                                timestamp =snapshot.child("timestamp").getValue(String::class.java)
+                                datetime = snapshot.child("datetime").getValue(String::class.java),
+                                pitch = snapshot.child("pitch").getValue(Double::class.java),
+                                roll = snapshot.child("roll").getValue(Double::class.java),
+                                timestamp = snapshot.child("timestamp").getValue(Double::class.java),
+                                yaw = snapshot.child("yaw").getValue(Double::class.java)
                             )
                             car_Entity = car
                         } else {
@@ -998,37 +1000,46 @@ class MainActivity : ComponentActivity() {
                     Text(text = viewModel.user!!.company_name ?: "N/A", fontWeight = FontWeight.Normal, fontSize = 15.sp)
                 }
                 Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
-                    Text(text = "Estimated Mileage: ", fontWeight = FontWeight.Bold, fontSize = 15.sp)
-                    Text(text = carEntity!!.est_milage ?: "N/A", fontWeight = FontWeight.Normal, fontSize = 15.sp)
+                    Text(text = "Pitch: ", fontWeight = FontWeight.Bold, fontSize = 15.sp)
+                    Text(text = "${carEntity?.pitch ?: "N/A"}", fontWeight = FontWeight.Normal, fontSize = 15.sp)
                 }
                 Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
-                    Text(text = "Battery Level: ", fontWeight = FontWeight.Bold, fontSize = 15.sp)
-                    Text(text = carEntity!!.batteryLevel.toString() ?: "N/A", fontWeight = FontWeight.Normal, fontSize = 15.sp)
+                    Text(text = "Yaw: ", fontWeight = FontWeight.Bold, fontSize = 15.sp)
+                    Text(text = "${carEntity?.yaw ?: "N/A"}", fontWeight = FontWeight.Normal, fontSize = 15.sp)
                 }
                 Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
-                    Text(text = "Engine Health: ", fontWeight = FontWeight.Bold, fontSize = 15.sp)
-                    Text(text = "${carEntity!!.engineHealth ?: "N/A"}", fontWeight = FontWeight.Normal, fontSize = 15.sp)
+                    Text(text = "Roll: ", fontWeight = FontWeight.Bold, fontSize = 15.sp)
+                    Text(text = "${carEntity?.roll ?: "N/A"}", fontWeight = FontWeight.Normal, fontSize = 15.sp)
                 }
                 Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
                     Text(text = "Latitude: ", fontWeight = FontWeight.Bold, fontSize = 15.sp)
-                    Text(text = "${carEntity!!.latitude ?: "N/A"}", fontWeight = FontWeight.Normal, fontSize = 15.sp)
+                    Text(text = "${carEntity?.latitude ?: "N/A"}", fontWeight = FontWeight.Normal, fontSize = 15.sp)
                 }
                 Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
                     Text(text = "Longitude: ", fontWeight = FontWeight.Bold, fontSize = 15.sp)
-                    Text(text = "${carEntity!!.longitude ?: "N/A"}", fontWeight = FontWeight.Normal, fontSize = 15.sp)
+                    Text(text = "${carEntity?.longitude ?: "N/A"}", fontWeight = FontWeight.Normal, fontSize = 15.sp)
                 }
                 Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
-                    Text(text = "Speed: ", fontWeight = FontWeight.Bold, fontSize = 15.sp)
-                    Text(text = "${carEntity!!.speed ?: "N/A"}", fontWeight = FontWeight.Normal, fontSize = 15.sp)
+                    Text(text = "Accel X: ", fontWeight = FontWeight.Bold, fontSize = 15.sp)
+                    Text(text = "${carEntity?.accel_x ?: "N/A"}", fontWeight = FontWeight.Normal, fontSize = 15.sp)
                 }
                 Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
-                    Text(text = "Warning: ", fontWeight = FontWeight.Bold, fontSize = 15.sp)
-                    Text(text = "${carEntity!!.warning ?: "N/A"}", fontWeight = FontWeight.Normal, fontSize = 15.sp)
+                    Text(text = "Accel Y: ", fontWeight = FontWeight.Bold, fontSize = 15.sp)
+                    Text(text = "${carEntity?.accel_y ?: "N/A"}", fontWeight = FontWeight.Normal, fontSize = 15.sp)
                 }
                 Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
-                    Text(text = "Time Stamp: ", fontWeight = FontWeight.Bold, fontSize = 15.sp)
-                    Text(text = "${carEntity!!.timestamp ?: "N/A"}", fontWeight = FontWeight.Normal, fontSize = 15.sp)
+                    Text(text = "Accel Z: ", fontWeight = FontWeight.Bold, fontSize = 15.sp)
+                    Text(text = "${carEntity?.accel_z ?: "N/A"}", fontWeight = FontWeight.Normal, fontSize = 15.sp)
                 }
+                Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
+                    Text(text = "Datetime: ", fontWeight = FontWeight.Bold, fontSize = 15.sp)
+                    Text(text = "${carEntity?.datetime ?: "N/A"}", fontWeight = FontWeight.Normal, fontSize = 15.sp)
+                }
+                Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
+                    Text(text = "Timestamp: ", fontWeight = FontWeight.Bold, fontSize = 15.sp)
+                    Text(text = "${carEntity?.timestamp ?: "N/A"}", fontWeight = FontWeight.Normal, fontSize = 15.sp)
+                }
+
 
             }
         }

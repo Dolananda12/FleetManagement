@@ -9,20 +9,24 @@ import androidx.room.PrimaryKey
 data class CarEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0 ,
-    @ColumnInfo("estimated_mileage")
-    val est_milage: String?,
-    @ColumnInfo("battery_level")
-    var batteryLevel: Double? = null,
-    @ColumnInfo("engine_health")
-    var engineHealth: String? = null,
+    @ColumnInfo("pitch")
+    val pitch: Double?,
+    @ColumnInfo("datetime")
+    var datetime:String? = null,
+    @ColumnInfo("yaw")
+    var yaw: Double? = null,
+    @ColumnInfo("roll")
+    var roll: Double? = null,
     @ColumnInfo("latitude")
     var latitude: Double? = null,
     @ColumnInfo("longitude")
     var longitude: Double? = null,
-    @ColumnInfo("speed")
-    var speed: Double? = null,
-    @ColumnInfo("warning")
-    var warning: String? = null, // Nullable as it might not be available initially
+    @ColumnInfo("accel_x")
+    var accel_x : Double? = null,
+    @ColumnInfo("accel_y")
+    var accel_y: Double? = null ,
+    @ColumnInfo("accel_z")
+    var accel_z: Double? = null,
     @ColumnInfo("timestamp")
-    var timestamp: String? = null // Nullable as it might not be available initially
+    var timestamp: Double? = null
 )
